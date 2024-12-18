@@ -21,7 +21,7 @@ export const ConvexClientProvider = ({
     return (
         <ClerkProvider publishableKey={publicKey}>
             <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
-                <Authenticated> <SignOutButton/>{children}</Authenticated>
+                <Authenticated>{children}</Authenticated>
                 <AuthLoading>
                     <Loading/>
                 </AuthLoading>
