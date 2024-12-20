@@ -1,9 +1,31 @@
-import React from 'react';
+"use client"
 
-const DashboardPage = () => {
+import React from 'react';
+import {EmptyOrg} from "@/app/(dashboard)/_components/empty-org";
+import {useOrganization} from "@clerk/nextjs";
+import {BoardList} from "@/app/(dashboard)/_components/board-list";
+
+interface DashboardPageProps {
+    searchParams: {
+        search?: string,
+        favorites?: string
+    }
+}
+
+const DashboardPage = ({searchParams}: DashboardPageProps) => {
+    const {organization} = useOrganization()
     return (
-        <div>
-            Dashboard page
+        <div className={"h-[calc(100%-80px)] p-6 flex flex-col items-center justify-center"}>
+            {!organization ?
+                (
+                    <EmptyOrg/>
+                ) :
+                (
+                    <BoardList
+                        orgId={organization.id}
+                        query={searchParams}
+                    />
+                )}
         </div>
     );
 };
