@@ -15,7 +15,7 @@ interface DashboardPageProps {
 const DashboardPage = ({searchParams}: DashboardPageProps) => {
     const {organization} = useOrganization()
     return (
-        <div className={"h-[calc(100%-80px)] p-6 flex flex-col items-center justify-center"}>
+        <div className={"h-[calc(100%-80px)] p-6 "}>
             {!organization ?
                 (
                     <EmptyOrg/>
