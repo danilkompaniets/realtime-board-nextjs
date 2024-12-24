@@ -39,6 +39,7 @@ export const RenameModal = () => {
             toast.error("Failed to rename board")
         })
     }
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent>
