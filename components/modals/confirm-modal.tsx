@@ -28,7 +28,9 @@ export const ConfirmModal = ({
                                  header,
                                  description,
                              }: ConfirmModalProps) => {
-    function handleConfirm() {
+    function handleConfirm(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault()
+        e.stopPropagation()
         onConfirm()
     }
 
@@ -47,12 +49,18 @@ export const ConfirmModal = ({
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>
+                    <AlertDialogCancel onClick={(event) => {
+                        event.preventDefault()
+                        event.stopPropagation()
+
+                    }}>
                         Cancel
                     </AlertDialogCancel>
                     <AlertDialogAction
                         disabled={disabled}
-                        onClick={handleConfirm}
+                        onClick={(e) => {
+                            handleConfirm(e)
+                        }}
                     >
                         Confirm
                     </AlertDialogAction>

@@ -36,8 +36,6 @@ export const Actions = ({children, sideOffset, side, id, title}: ActionProps) =>
     }
 
     const onDelete = () => {
-        this.preventDefault()
-        this.stopPropagation()
         mutate({
             id: id
         })
@@ -50,19 +48,27 @@ export const Actions = ({children, sideOffset, side, id, title}: ActionProps) =>
             <DropdownMenuTrigger asChild={true}>
                 {children}
             </DropdownMenuTrigger>
-            <DropdownMenuContent side={side} sideOffset={sideOffset} className={"w-60"}>
+            <DropdownMenuContent
+                onClick={(e) => e.stopPropagation()}
+                side={side} sideOffset={sideOffset} className={"w-60"}>
                 <DropdownMenuItem onClick={(event) => {
                     onCopyLink(event)
                 }} className={"p-3 cursor-pointer"}>
                     <Link2 className={"h-4 w-4 mr-2"}/>
                     Copy board link
                 </DropdownMenuItem>
-                <ConfirmModal onConfirm={onDelete} header={"Delete board?"}
-                              description={"this will delete the board and all of its content"}>
-                    <Button onClick={(e) => e.stopPropagation()} variant={"ghost"}
-                            className={"text-sm w-full justify-start p-3 cursor-pointer"}>
-                        <Trash2 className={"h-4 w-4 mr-2"}/>
-                        Delete board
+                <ConfirmModal
+                    header="Delete board?"
+                    description="This will delete the board and all of its contents."
+                    disabled={pending}
+                    onConfirm={onDelete}
+                >
+                    <Button
+                        variant="ghost"
+                        className="p-3 cursor-pointer text-sm w-full justify-start font-normal"
+                    >
+                        <Trash2 className="h-4 w-4 mr-2"/>
+                        Delete
                     </Button>
                 </ConfirmModal>
                 <DropdownMenuItem onClick={(event) => {
