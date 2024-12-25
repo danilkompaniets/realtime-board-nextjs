@@ -12,7 +12,7 @@ interface LiveBlocksClientProviderProps {
 
 export const LiveBlocksClientProvider = ({children}: LiveBlocksClientProviderProps) => {
     return (
-        <LiveblocksProvider publicApiKey={liveBlocksApiKey}>
+        <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
             {children}
         </LiveblocksProvider>
     )
