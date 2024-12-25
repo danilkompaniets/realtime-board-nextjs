@@ -3,21 +3,18 @@
 import {Info} from "@/app/board/[boardId]/_components/info";
 import {Participants} from "@/app/board/[boardId]/_components/participants";
 import {Toolbar} from "@/app/board/[boardId]/_components/toolbar";
-import {useSelf} from "@liveblocks/react";
 
 interface CanvasProps {
-    boardId: string
+    params: {
+        boardId: string;
+    }
 }
 
-export const Canvas = ({boardId}: CanvasProps) => {
-    const info = useSelf((me) => me.info)
-
-
-
+export const Canvas = ({params}: CanvasProps) => {
     return (
         <main
             className={"h-full w-full relative bg-neutral-100 touch-none"}>
-            <Info/>
+            <Info boardId={params.boardId}/>
             <Participants/>
             <Toolbar/>
         </main>
