@@ -70,6 +70,13 @@ export enum LayerType {
     Note
 }
 
+export type Layer =
+    | RectangleLayer
+    | EllipseLayer
+    | PathLayer
+    | TextLayer
+    | NoteLayer;
+
 export type RectangleLayer = {
     type: LayerType.Rectangle;
     x: number;

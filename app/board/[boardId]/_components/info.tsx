@@ -31,7 +31,7 @@ export const Info = ({boardId}: InfoProps) => {
     })
 
     if (!data) {
-        return Info.Skeleton
+        return <Info.Skeleton/>
     }
 
     return (
