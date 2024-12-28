@@ -15,7 +15,7 @@ export type CanvasState = | {
     layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text | LayerType.Note
 } | {
     mode: CanvasMode.Resizing,
-    initialBounce: XYWH,
+    initialBounds: XYWH,
     corner: Side
 } | {
     mode: CanvasMode.Pencil
