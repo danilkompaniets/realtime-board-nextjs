@@ -1,12 +1,12 @@
 "use client";
 import {useStorage} from "@liveblocks/react";
 import {LayerType} from "@/types/canvas";
-import React, {memo} from "react";
+import React, {memo, PointerEvent} from "react";
 import {Rectangle} from "./rectangle";
 
 interface LayerPreviewProps {
     id: string;
-    onLayerPointerDown: (e: React.PointerEvent, layerId: string) => void;
+    onLayerPointerDown: (e: PointerEvent, layerId: string) => void;
     selectionColor?: string;
 }
 
