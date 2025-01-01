@@ -1,18 +1,19 @@
 "use client"
 
-import React from 'react';
+import React, { use } from 'react';
 import {CanvasLoading} from "@/app/board/[boardId]/_components/canvas-loading";
 import {Room} from "@/components/room";
 import {Canvas} from "@/app/board/[boardId]/_components/canvas";
 
 interface BoardIdPageProps {
-    params: {
+    params: Promise<{
         boardId: string
-    }
+    }>
 }
 
 
-const BoardIdPage = ({params}: BoardIdPageProps) => {
+const BoardIdPage = (props: BoardIdPageProps) => {
+    const params = use(props.params);
 
 
     return (
