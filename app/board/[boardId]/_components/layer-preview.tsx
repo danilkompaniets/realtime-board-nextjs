@@ -3,6 +3,9 @@ import {useStorage} from "@liveblocks/react";
 import {LayerType} from "@/types/canvas";
 import React, {memo, PointerEvent} from "react";
 import {Rectangle} from "./rectangle";
+import {Ellipse} from "@/app/board/[boardId]/_components/ellipse";
+import {Text} from "@/app/board/[boardId]/_components/text";
+import {Note} from "@/app/board/[boardId]/_components/note";
 
 interface LayerPreviewProps {
     id: string;
@@ -23,7 +26,34 @@ export const  LayerPreview = memo(
                         onPointerDown={onLayerPointerDown}
                         selectionColor={selectionColor}
                     />
+                )
+            case LayerType.Ellipse:
+                return (
+                    <Ellipse
+                        id={id}
+                        layer={layer}
+                        onPointerDown={onLayerPointerDown}
+                        selectionColor={selectionColor}
+                    />
                 );
+            case LayerType.Text:
+                return (
+                    <Text
+                        id={id}
+                        layer={layer}
+                        onPointerDown={onLayerPointerDown}
+                        selectionColor={selectionColor}
+                    />
+                );
+            case LayerType.Note:
+                return (
+                    <Note
+                        id={id}
+                        layer={layer}
+                        onPointerDown={onLayerPointerDown}
+                        selectionColor={selectionColor}
+                    />
+                )
             default:
                 console.warn("Unsupported layer type", layer.type);
         }
