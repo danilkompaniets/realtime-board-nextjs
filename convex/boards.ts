@@ -1,7 +1,7 @@
-import { v } from 'convex/values'
-import { getAllOrThrow } from 'convex-helpers/server/relationships'
+import {v} from 'convex/values'
+import {getAllOrThrow} from 'convex-helpers/server/relationships'
 
-import { query } from './_generated/server'
+import {query} from './_generated/server'
 import {Id} from "./_generated/dataModel";
 
 export const get = query({
