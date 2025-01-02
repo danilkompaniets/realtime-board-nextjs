@@ -12,11 +12,11 @@ import {BringToFront, SendToBackIcon, Trash2} from "lucide-react";
 
 interface SelectionToolsProps {
     camera: Camera,
-    setLastUsedColor: (color: Color) => void
+    setLastUsedColorAction: (color: Color) => void
 }
 
 
-export const SelectionTools: FC<SelectionToolsProps> = ({camera, setLastUsedColor}) => {
+export const SelectionTools: FC<SelectionToolsProps> = ({camera, setLastUsedColorAction}) => {
     const deleteLayers = useDeleteLayers()
     const selection = useSelf((me) => me.presence.selection)
     const selectionBounds = useSelectionBounce()
@@ -58,12 +58,12 @@ export const SelectionTools: FC<SelectionToolsProps> = ({camera, setLastUsedColo
 
     const setFill = useMutation(({storage}, fill: Color) => {
         const liveLayers = storage.get("layers")
-        setLastUsedColor(fill)
+        setLastUsedColorAction(fill)
 
         selection?.forEach(id => {
             liveLayers.get(id)?.set("fill", fill)
         })
-    }, [selection, setLastUsedColor])
+    }, [selection, setLastUsedColorAction])
 
     if (!selectionBounds) {
         return null

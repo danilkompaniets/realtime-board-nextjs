@@ -24,7 +24,6 @@ export const  LayerPreview = memo(
                 return (
                     <Path
                         key={id}
-                        id={id}
                         points={layer.points}
                         onPointerDown={(e) => onLayerPointerDown(e, id)}
                         stroke={layer.fill}
@@ -70,7 +69,7 @@ export const  LayerPreview = memo(
                     />
                 )
             default:
-                console.warn("Unsupported layer type", layer.type);
+                console.warn("Unsupported layer type");
         }
     }
 );

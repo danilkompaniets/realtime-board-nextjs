@@ -48,7 +48,7 @@ export const Text = ({
         updateValue(e.target.value)
     }
 
-    const {x, y, height, width, fill, value, type} = layer
+    const {x, y, height, width, fill, value} = layer
 
     return (
         <foreignObject

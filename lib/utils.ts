@@ -1,6 +1,7 @@
 import {type ClassValue, clsx} from "clsx"
 import {twMerge} from "tailwind-merge"
 import {Camera, Color, Layer, LayerType, PathLayer, Point, Side, XYWH} from "@/types/canvas";
+import React from "react";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -21,7 +22,7 @@ export const connectionIdToColor = (connectionId: number): string => {
   return colors[connectionId % colors.length]
 }
 
-export const pointerEventToCanvasPoint = (e: PointerEvent, camera: Camera) => {
+export const pointerEventToCanvasPoint = (e: React.PointerEvent | PointerEvent, camera: Camera) => {
   return {
     x: Math.round(e.clientX - camera.x),
     y: Math.round(e.clientY - camera.y),
@@ -74,7 +75,7 @@ export function findInterceptingLayersWithRectangle(
     a: Point,
     b: Point
 ) {
-  if (!layersIds || typeof layersIds[Symbol.iterator] !== "function") {
+  if (!layersIds || (typeof layersIds[Symbol.iterator] !== "function" && !(layersIds instanceof Set))) {
     throw new TypeError("layersIds is not iterable");
   }
 
@@ -109,7 +110,6 @@ export function findInterceptingLayersWithRectangle(
   return ids;
 }
 
-
 export function getContrastingTextColor(color: Color) {
   const luminance = 0.299 * color.r + 0.587 * color.g + 0.114 * color.b;
   return luminance > 182 ? "black" : "white";
@@ -117,7 +117,7 @@ export function getContrastingTextColor(color: Color) {
 
 
 export function penPointsToPathLayer(
-    points: number[][],
+    points: [number, number, number][], // Specify the structure of points
     color: Color
 ): PathLayer {
   if (points.length < 2) {
@@ -156,10 +156,9 @@ export function penPointsToPathLayer(
     width: right - left,
     height: bottom - top,
     fill: color,
-    points: points.map(([x, y, pressure]) => [x - left, y - top, pressure]),
+    points: points.map(([x, y, pressure]) => [x - left, y - top, pressure]), // Map correctly
   };
 }
-
 
 export function getSvgPathFromStroke(stroke: number[][]) {
   if (!stroke.length) return "";

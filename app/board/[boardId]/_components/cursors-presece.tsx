@@ -27,7 +27,7 @@ const Drafts = () => {
         <>
             {others.map(([key, other]) => {
                 return (
-                    <Path x={0} y={0} points={other.pencilDraft!}
+                    <Path key={key} x={0} y={0} points={other.pencilDraft!}
                           fill={other.penColor ? colorToCss(other.penColor) : "#000"}/>
                 )
             })}

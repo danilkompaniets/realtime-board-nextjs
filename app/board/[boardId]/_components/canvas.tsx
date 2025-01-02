@@ -256,8 +256,8 @@ export const Canvas = ({boardId}: CanvasProps) => {
 
     const onPointerMove = useMutation(
         ({setMyPresence}, e: React.PointerEvent) => {
-            e.preventDefault();
             const current = pointerEventToCanvasPoint(e, camera);
+            e.preventDefault();
 
             if (canvasState.mode === CanvasMode.Pressing) {
                 startMultiSelection(current, canvasState.origin);
@@ -387,7 +387,7 @@ export const Canvas = ({boardId}: CanvasProps) => {
                         if (e.shiftKey) {
                             history.redo()
                         } else {
-                            history.undo
+                            history.undo()
                         }
                         break
                     }
@@ -416,7 +416,7 @@ export const Canvas = ({boardId}: CanvasProps) => {
                 undo={history.undo}
                 redo={history.redo}
             />
-            <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor}/>
+            <SelectionTools camera={camera} setLastUsedColorAction={setLastUsedColor}/>
             <svg
                 className="h-[100vh] w-[100vw]"
                 onWheel={onWheel}

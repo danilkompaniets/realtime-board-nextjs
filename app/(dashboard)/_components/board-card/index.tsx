@@ -50,15 +50,15 @@ export const BoardCard = ({
     const {
         mutate: onUnFavorite,
         pending: unFavoritePending
-    } = useApiMutation(api.board.unFavorite)
+    } = useApiMutation(api.board.unfavorite)
 
     const toggleFavorite = () => {
         if (isFavorite) {
             onUnFavorite({id})
-                .catch((e) =>
+                .catch(() =>
                     toast.error("Favorite failed"))
         } else {
-            onFavorite({id, orgId}).catch((e) =>
+            onFavorite({id, orgId}).catch(() =>
                 toast.error("unfavorite failed"))
         }
     }

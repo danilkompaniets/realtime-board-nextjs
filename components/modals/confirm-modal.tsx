@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import {
@@ -10,57 +10,52 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger
+    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 interface ConfirmModalProps {
-    children: React.ReactNode
-    onConfirm: () => void
-    disabled?: boolean
-    header: string
-    description?: string
+    children: React.ReactNode;
+    onConfirmAction: () => void;
+    disabled?: boolean;
+    header: string;
+    description?: string;
 }
 
 export const ConfirmModal = ({
                                  children,
-                                 onConfirm,
+                                 onConfirmAction,
                                  disabled,
                                  header,
                                  description,
                              }: ConfirmModalProps) => {
-    function handleConfirm(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault()
-        e.stopPropagation()
-        onConfirm()
-    }
+    const handleConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onConfirmAction();
+    };
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger asChild={true}>
+            <AlertDialogTrigger asChild>
                 {children}
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>
-                        {header}
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {description}
-                    </AlertDialogDescription>
+                    <AlertDialogTitle>{header}</AlertDialogTitle>
+                    <AlertDialogDescription>{description}</AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel onClick={(event) => {
-                        event.preventDefault()
-                        event.stopPropagation()
-
-                    }}>
+                    <AlertDialogCancel
+                        onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }}
+                    >
                         Cancel
                     </AlertDialogCancel>
                     <AlertDialogAction
                         disabled={disabled}
-                        onClick={(e) => {
-                            handleConfirm(e)
-                        }}
+                        onClick={(e) => handleConfirm(e)}
                     >
                         Confirm
                     </AlertDialogAction>
@@ -69,4 +64,3 @@ export const ConfirmModal = ({
         </AlertDialog>
     );
 };
-

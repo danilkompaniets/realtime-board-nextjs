@@ -61,7 +61,7 @@ export const Actions = ({children, sideOffset, side, id, title}: ActionProps) =>
                     header="Delete board?"
                     description="This will delete the board and all of its contents."
                     disabled={pending}
-                    onConfirm={onDelete}
+                    onConfirmAction={onDelete}
                 >
                     <Button
                         variant="ghost"

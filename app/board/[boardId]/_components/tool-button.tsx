@@ -7,15 +7,15 @@ import {Button} from "@/components/ui/button";
 interface ToolButtonProps {
     label: string
     icon: LucideIcon
-    onClick: () => void
+    onClickAction: () => void
     isActive?: boolean
     isDisabled?: boolean
 }
 
-export const ToolButton = ({label, icon: Icon, onClick, isActive, isDisabled}: ToolButtonProps) => {
+export const ToolButton = ({label, icon: Icon, onClickAction, isActive, isDisabled}: ToolButtonProps) => {
     return (
         <Hint label={label} side={"right"} sideOffset={14}>
-            <Button disabled={isDisabled} onClick={onClick} size={"icon"} variant={isActive ? "boardActive" : "board"}>
+            <Button disabled={isDisabled} onClick={onClickAction} size={"icon"} variant={isActive ? "boardActive" : "board"}>
                 <Icon/>
             </Button>
         </Hint>

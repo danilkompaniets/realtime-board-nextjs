@@ -1,5 +1,7 @@
-import { getSvgPathFromStroke } from "@/lib/utils";
+import {colorToCss, getSvgPathFromStroke} from "@/lib/utils";
 import getStroke from "perfect-freehand";
+import {Color} from "@/types/canvas";
+import React from "react";
 
 interface PathProps {
     x: number;
@@ -7,7 +9,7 @@ interface PathProps {
     points: number[][];
     fill: string;
     onPointerDown?: (e: React.PointerEvent) => void;
-    stroke?: string;
+    stroke?: Color;
 }
 
 export const Path = ({
@@ -18,6 +20,9 @@ export const Path = ({
                          onPointerDown,
                          stroke,
                      }: PathProps) => {
+    if (!points) {
+        return null
+    }
     return (
         <path
             className="drop-shadow-md"
@@ -36,7 +41,7 @@ export const Path = ({
             x={0}
             y={0}
             fill={fill}
-            stroke={stroke}
+            stroke={stroke ? colorToCss(stroke) : "#000"}
             strokeWidth={1}
         />
     );

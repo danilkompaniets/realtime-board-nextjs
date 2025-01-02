@@ -33,7 +33,7 @@ export const Toolbar = ({
         <div className={"absolute top-[50%] -translate-y-[50%] left-2 flex flex-col gap-y-4"}>
             <div className={"bg-white rounded-md p-1.5 flex gap-y-1 flex-col items-center shadow-md"}>
                 <ToolButton label={"select"} icon={MousePointer2Icon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({mode: CanvasMode.None})
                             }}
 
@@ -46,7 +46,7 @@ export const Toolbar = ({
                 />
 
                 <ToolButton label={"Text"} icon={TypeIcon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({
                                     mode: CanvasMode.Inserting,
                                     layerType: LayerType.Text
@@ -60,7 +60,7 @@ export const Toolbar = ({
                 />
 
                 <ToolButton label={"Sticky note"} icon={StickyNoteIcon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({
                                     mode: CanvasMode.Inserting,
                                     layerType: LayerType.Note
@@ -73,7 +73,7 @@ export const Toolbar = ({
                 />
 
                 <ToolButton label={"Rectangle"} icon={SquareIcon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({
                                     mode: CanvasMode.Inserting,
                                     layerType: LayerType.Rectangle
@@ -87,7 +87,7 @@ export const Toolbar = ({
                 />
 
                 <ToolButton label={"Ellipse"} icon={CircleIcon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({
                                     mode: CanvasMode.Inserting,
                                     layerType: LayerType.Ellipse
@@ -101,7 +101,7 @@ export const Toolbar = ({
                 />
 
                 <ToolButton label={"Pen"} icon={PencilIcon}
-                            onClick={() => {
+                            onClickAction={() => {
                                 setCanvasState({
                                     mode: CanvasMode.Pencil,
                                 })
@@ -113,8 +113,8 @@ export const Toolbar = ({
 
             </div>
             <div className={"bg-white rounded-md p-1.5 flex  flex-col items-center shadow-md"}>
-                <ToolButton label={"Undo"} icon={Undo2Icon} isDisabled={!canUndo} onClick={undo}/>
-                <ToolButton label={"Redo"} icon={Redo2Icon} isDisabled={!canRedo} onClick={redo}/>
+                <ToolButton label={"Undo"} icon={Undo2Icon} isDisabled={!canUndo} onClickAction={undo}/>
+                <ToolButton label={"Redo"} icon={Redo2Icon} isDisabled={!canRedo} onClickAction={redo}/>
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ import {useRouter} from "next/navigation";
 export const SearchInput = () => {
     const router = useRouter();
     const [value, setValue] = useState("");
-    const [debouncedValue, setDebouncedValue] = useDebounceValue(value, 200)
+    const [debouncedValue] = useDebounceValue(value, 200)
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
     }
