@@ -16,6 +16,8 @@ export const Room = ({children, roomId, fallback}: RoomProps) => {
         <RoomProvider
             id={roomId}
             initialPresence={{
+                pencilDraft: null,
+                penColor: null,
                 cursor: null,
                 selection: [],
             }}
